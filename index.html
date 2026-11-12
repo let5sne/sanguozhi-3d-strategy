@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#14110d" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%2314110d'/%3E%3Crect x='6' y='6' width='52' height='52' fill='none' stroke='%23c9a86a' stroke-width='2'/%3E%3Ctext x='32' y='45' font-size='38' text-anchor='middle' fill='%23c9a86a' font-family='serif'%3E%E6%BC%A2%3C/text%3E%3C/svg%3E" />
+  <title>三国志 · 汉末十三州 | 三维策略舆图</title>
+  <meta name="description" content="基于 three.js 的汉末三国三维策略地图原型：写实地形、州郡版图、城池武将、昼夜四季与天气。" />
+  <link rel="stylesheet" href="/src/ui/style.css" />
+</head>
+<body>
+  <div id="app">
+    <!-- three.js 画布挂载点 -->
+    <div id="viewport"></div>
+    <!-- 城池 / 武将的 HTML 标签层（投影到屏幕坐标） -->
+    <div id="labels" aria-hidden="true"></div>
+
+    <!-- 载入遮罩：程序化贴图生成期间显示 -->
+    <div id="loading">
+      <div class="loading-inner">
+        <div class="seal">漢</div>
+        <div class="loading-title">三 國 志</div>
+        <div class="loading-sub">汉末十三州 · 三维舆图</div>
+        <div class="loading-bar"><i id="loading-progress"></i></div>
+        <div class="loading-status" id="loading-status">正在推演山川形胜…</div>
+      </div>
+    </div>
+
+    <!-- 顶部：题名 + 纪年 -->
+    <header id="topbar">
+      <div class="brand">
+        <div class="brand-seal">志</div>
+        <div class="brand-text">
+          <h1>三國志 <span>·</span> 漢末十三州</h1>
+          <p>THREE KINGDOMS · STRATEGIC ATLAS</p>
+        </div>
+      </div>
+      <div class="era">
+        <span id="era-label">建安二十四年</span>
+        <b id="clock-label">巳時 · 晴</b>
+      </div>
+    </header>
+
+    <!-- 左侧：势力图例与操作提示 -->
+    <aside id="left-panel" class="panel">
+      <div class="panel-title">天 下 大 勢 <i></i></div>
+      <div id="faction-legend"></div>
+      <div class="panel-divider"></div>
+      <div class="help-title">操 作</div>
+      <ul class="help-list">
+        <li><em>左键拖拽</em> 旋转舆图</li>
+        <li><em>右键拖拽</em> 平移 · <em>滚轮</em> 缩放</li>
+        <li><em>单击</em> 查看城池 / 武将 / 州郡</li>
+        <li><em>W A S D</em> 移动 · <em>Q E</em> 旋转</li>
+        <li><em>触屏</em> 单指旋转 · 双指缩放平移</li>
+      </ul>
+    </aside>
+
+    <!-- 右侧：选中对象信息 -->
+    <aside id="info-panel" class="panel">
+      <div class="panel-title">輿 圖 志 <i></i><button id="info-close" title="收起">×</button></div>
+      <div id="info-body"></div>
+    </aside>
+
+    <!-- 左下：小地图 -->
+    <div id="minimap-wrap">
+      <div class="mini-head"><span>州 郡 全 圖</span><em id="mini-coord">—</em></div>
+      <canvas id="minimap" width="240" height="220"></canvas>
+      <div class="mini-foot">点击舆图可移师至该处</div>
+    </div>
+
+    <!-- 底部控制台 -->
+    <footer id="controlbar">
+      <div class="ctl-block time-block">
+        <div class="ctl-label">時 辰 <b id="hour-value">09:12</b></div>
+        <input id="hour-slider" type="range" min="0" max="24" step="0.05" value="9.2" />
+        <div class="ticks"><span>子</span><span>卯</span><span>午</span><span>酉</span><span>子</span></div>
+      </div>
+      <div class="ctl-block">
+        <div class="ctl-label">四 時</div>
+        <div class="btn-row" id="season-btns"></div>
+      </div>
+      <div class="ctl-block">
+        <div class="ctl-label">天 氣</div>
+        <div class="btn-row" id="weather-btns"></div>
+      </div>
+      <div class="ctl-block">
+        <div class="ctl-label">畫 質 / 視 角</div>
+        <div class="btn-row">
+          <button class="ctl-btn" id="quality-btn" title="切换渲染档位">高</button>
+          <button class="ctl-btn" id="reset-btn" title="复位镜头">复位</button>
+          <button class="ctl-btn" id="auto-btn" title="自动昼夜循环">昼夜</button>
+          <button class="ctl-btn" id="label-btn" title="显示 / 隐藏城池名">名签</button>
+        </div>
+      </div>
+    </footer>
+
+    <div id="hint">拖拽旋转 · 滚轮缩放 · 单击查考</div>
+    <div id="fps"></div>
+  </div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+/**
+ * 武将数据（占位）。city 为驻守城池名，须存在于 map.js 的 CITIES 中。
+ * 五位数值为示例，非史实考据；可替换为游戏数值表 / 后端接口返回值。
+ * model 字段预留真实 GLTF 模型路径：填入 public/assets/models/xxx.glb 后
+ * Characters 模块会优先加载该模型（见 world/Characters.js 的 ASSET_MANIFEST）。
+ */
+export const GENERALS = [
+  { name:'曹操', zi:'孟德', faction:'魏', city:'洛阳', title:'魏武帝 · 丞相',
+    lead:96, force:72, intel:91, pol:94, charm:96, unit:'骑兵', horse:'绝影',
+    bio:'一名吉利，小字阿瞒。挟天子以令诸侯，平袁绍、定河北，开屯田、唯才是举，为魏基业之奠基者。',
+    model:null, color:0x2b5c8f },
+  { name:'司马懿', zi:'仲达', faction:'魏', city:'宛城', title:'太尉 · 都督雍凉',
+    lead:93, force:63, intel:96, pol:90, charm:82, unit:'步兵', horse:'乌孙马',
+    bio:'河内温县人，鹰视狼顾。拒武侯于渭南，平辽东公孙氏，后世追尊宣帝。',
+    model:null, color:0x3a6699 },
+  { name:'张辽', zi:'文远', faction:'魏', city:'合肥', title:'征东将军',
+    lead:93, force:92, intel:78, pol:64, charm:80, unit:'骑兵', horse:'赤兔旧厩',
+    bio:'雁门马邑人。白狼山斩蹋顿，逍遥津以八百骑挫孙吴十万，江东小儿闻名止啼。',
+    model:null, color:0x2f5f88 },
+  { name:'夏侯惇', zi:'元让', faction:'魏', city:'许昌', title:'大将军',
+    lead:87, force:91, intel:60, pol:70, charm:84, unit:'步兵', horse:'乌骓',
+    bio:'沛国谯人，曹氏宗室股肱。拔矢啖睛，性清俭，虽在军旅常亲师受业。',
+    model:null, color:0x254f7c },
+  { name:'刘备', zi:'玄德', faction:'蜀', city:'成都', title:'汉昭烈皇帝',
+    lead:82, force:74, intel:76, pol:81, charm:99, unit:'步兵', horse:'的卢',
+    bio:'涿郡涿县人，汉中山靖王之后。三顾茅庐得卧龙，赤壁联吴，跨有荆益，成鼎足之业。',
+    model:null, color:0xa63c31 },
+  { name:'诸葛亮', zi:'孔明', faction:'蜀', city:'汉中', title:'丞相 · 武乡侯',
+    lead:92, force:38, intel:100, pol:96, charm:92, unit:'弩兵', horse:'四轮车',
+    bio:'琅琊阳都人，号卧龙。隆中对定三分，治蜀以法，六出祁山，鞠躬尽瘁，死而后已。',
+    model:null, color:0x9c4034 },
+  { name:'关羽', zi:'云长', faction:'蜀', city:'永安', title:'前将军 · 汉寿亭侯',
+    lead:95, force:98, intel:76, pol:62, charm:93, unit:'骑兵', horse:'赤兔',
+    bio:'河东解良人。白马斩颜良，水淹七军威震华夏，义绝千古，后世尊为武圣。',
+    model:null, color:0x8f352c },
+  { name:'赵云', zi:'子龙', faction:'蜀', city:'剑阁', title:'翊军将军',
+    lead:87, force:94, intel:74, pol:70, charm:91, unit:'骑兵', horse:'照夜玉狮子',
+    bio:'常山真定人。长坂坡单骑救主，汉水偃旗息鼓，一身都是胆。',
+    model:null, color:0xa8453a },
+  { name:'孙权', zi:'仲谋', faction:'吴', city:'建业', title:'吴大帝',
+    lead:83, force:69, intel:84, pol:90, charm:93, unit:'水军', horse:'紫燕',
+    bio:'吴郡富春人，承父兄之业。赤壁决策联刘抗曹，据有江东，通夷洲，开海上之利。',
+    model:null, color:0x2f7a63 },
+  { name:'周瑜', zi:'公瑾', faction:'吴', city:'柴桑', title:'偏将军 · 大都督',
+    lead:95, force:71, intel:94, pol:80, charm:95, unit:'水军', horse:'白雪',
+    bio:'庐江舒县人。赤壁火攻大破曹公，雅量高致，精音律，时称「曲有误，周郎顾」。',
+    model:null, color:0x347f68 },
+  { name:'陆逊', zi:'伯言', faction:'吴', city:'武昌', title:'丞相 · 大都督',
+    lead:94, force:52, intel:95, pol:91, charm:86, unit:'水军', horse:'青骢',
+    bio:'吴郡吴县人。夷陵火烧连营，石亭破曹休，出将入相，江东柱石。',
+    model:null, color:0x2b7059 },
+  { name:'吕蒙', zi:'子明', faction:'吴', city:'江陵', title:'南郡太守',
+    lead:89, force:81, intel:89, pol:78, charm:84, unit:'水军', horse:'乌云踏雪',
+    bio:'汝南富陂人。士别三日当刮目相看，白衣渡江袭荆州，擒关羽。',
+    model:null, color:0x337a60 },
+  { name:'公孙瓒', zi:'伯圭', faction:'群', city:'代郡', title:'前将军 · 易侯',
+    lead:84, force:88, intel:62, pol:52, charm:70, unit:'骑兵', horse:'白马',
+    bio:'辽西令支人，白马义从威震塞北。筑易京楼橹自守，终为袁绍所灭。',
+    model:null, color:0x8a7654 },
+];
+
+/** 势力简介（HUD 图例用） */
+export const FACTION_LORE = {
+  魏: '据中原、河北、关陇，带甲百万，屯田积谷，奉天子以令不臣。',
+  蜀: '跨有益州、汉中，山川险固，以攻为守，志在兴复汉室。',
+  吴: '据长江天堑与荆扬交广，舟师精利，依江东豪族而立。',
+  群: '边郡割据、羌胡杂处，未奉正朔的独立势力。',
+};
